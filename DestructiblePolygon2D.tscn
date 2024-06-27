@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://bl4be1sf8nie2"]
+
+[ext_resource type="Script" path="res://Example.gd" id="1_cjwx4"]
+[ext_resource type="Script" path="res://DestructiblePolygon2D.gd" id="2_eemxi"]
+[ext_resource type="Texture2D" uid="uid://i5ufpq8hvd4c" path="res://icon.svg" id="3_mtalg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yrt33"]
+radius = 32.0
+
+[node name="Example" type="Node2D"]
+script = ExtResource("1_cjwx4")
+
+[node name="DestructiblePolygon2D" type="Node2D" parent="."]
+show_behind_parent = true
+position = Vector2(576, 324)
+script = ExtResource("2_eemxi")
+collidable = true
+
+[node name="Polygon2D" type="Polygon2D" parent="DestructiblePolygon2D"]
+texture_repeat = 2
+antialiased = true
+texture = ExtResource("3_mtalg")
+polygon = PackedVector2Array(-462, -186, 462, -186, 462, 250, -462, 250)
+
+[node name="Ball1" type="RigidBody2D" parent="."]
+position = Vector2(320, 106)
+gravity_scale = 0.2
+can_sleep = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball1"]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("3_mtalg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball1"]
+shape = SubResource("CircleShape2D_yrt33")
+
+[node name="Ball2" type="RigidBody2D" parent="."]
+position = Vector2(576, 106)
+gravity_scale = 0.2
+can_sleep = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball2"]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("3_mtalg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball2"]
+shape = SubResource("CircleShape2D_yrt33")
+
+[node name="Ball3" type="RigidBody2D" parent="."]
+position = Vector2(850, 106)
+gravity_scale = 0.2
+can_sleep = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball3"]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("3_mtalg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball3"]
+shape = SubResource("CircleShape2D_yrt33")
